@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // قائمة البصمات المسموح بها
     const allowedFingerprints = [
-        '09ebc4777f2d8d915fb8b093d1cc7d30',
-        'dd740041a38520f1892433695e84845c',
+        '',
+        '',
     ];
 
     // التحقق من إذا كانت البصمة الحالية مسموح بها
