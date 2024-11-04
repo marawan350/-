@@ -9,8 +9,8 @@
 
   // قائمة البصمات المسموح بها
   const allowedFingerprints = [
+      'ي',
       '3ff5db56750d5ed8317289df8aaaff10',
-      'example_fingerprint_2',
       // أضف المزيد من البصمات المسموح بها هنا
   ];
 
