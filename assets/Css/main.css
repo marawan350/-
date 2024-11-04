@@ -1,0 +1,334 @@
+:root {
+  --mainColor: #1a73e8; /* اللون الأساسي */
+  --textColor: #f5f5f5; /* لون النص الأساسي */
+  --bgSection: #f0f4f8; /* لون خلفية الأقسام */
+  --mainTransition: 0.3s ease; /* تأثير الانتقال */
+}
+
+* {
+  box-sizing: border-box; /* ضبط حجم الصندوق */
+}
+
+body {
+  font-family: "Roboto", sans-serif; /* الخط المستخدم */
+  margin: 0; /* إزالة الهوامش */
+  direction: rtl; /* توجيه النص إلى اليمين */
+}
+
+a {
+  text-decoration: none; /* إزالة التسطير */
+  color: inherit; /* استخدام لون النص الافتراضي */
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fff; /* لون خلفية الهيدر */
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.7); /* ظل الهيدر */
+  display: flex;
+  justify-content: center; /* توسيط المحتوى */
+  align-items: center; /* توسيط المحتوى عموديًا */
+  z-index: 1000; /* فوق جميع العناصر الأخرى */
+}
+
+.icon {
+  position: absolute;
+  right: 15px; /* المسافة من اليمين */
+  cursor: pointer; /* شكل المؤشر عند التمرير */
+  font-size: 25px; /* حجم الأيقونة */
+  color: var(--mainColor); /* لون الأيقونة */
+}
+
+.logo-center {
+  font-size: 25px; /* حجم شعار النص */
+  color: var(--mainColor); /* لون الشعار */
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px; /* تحت الهيدر */
+  right: -250px; /* خارج الشاشة */
+  width: 250px; /* عرض القائمة الجانبية */
+  height: calc(100vh - 60px); /* ملء الشاشة */
+  background-color: #fff; /* لون خلفية القائمة */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* ظل القائمة */
+  padding-top: 20px; /* حشوة من الأعلى */
+  transition: transform var(--mainTransition); /* تأثير الانتقال */
+  z-index: 1001; /* فوق العناصر الأخرى */
+}
+
+.sidebar.show {
+  transform: translateX(-250px); /* حركة القائمة عند الظهور */
+}
+
+.sidebar ul {
+  list-style: none; /* إزالة النقاط */
+  padding: 0; /* إزالة الحشوات */
+  margin: 0; /* إزالة الهوامش */
+}
+
+.sidebar ul li {
+  padding: 15px; /* حشوة لكل عنصر */
+}
+
+.subject > span {
+  cursor: pointer; /* شكل المؤشر عند التمرير */
+  font-weight: bold; /* جعل الخط عريض */
+  color: #333; /* لون النص */
+  display: flex;
+  align-items: center; /* توسيط العناصر عموديًا */
+  justify-content: space-between; /* توزيع العناصر */
+  flex-direction: row-reverse; /* عكس ترتيب العناصر */
+}
+
+.arrow {
+  transition: transform var(--mainTransition); /* تأثير السهم */
+}
+
+.rotate {
+  transform: rotate(90deg); /* دوران السهم */
+}
+
+.sub-menu {
+  max-height: 0; /* إخفاء القائمة الفرعية */
+  overflow: hidden; /* إخفاء العناصر الزائدة */
+  transition: max-height var(--mainTransition); /* تأثير الانتقال */
+  padding-right: 15px; /* حشوة من اليمين */
+}
+
+.sub-menu.show {
+  max-height: 100px; /* إظهار القائمة الفرعية */
+}
+
+.sidebar ul li a {
+  color: #333; /* لون الروابط */
+  display: block; /* عرض ككتلة */
+  text-align: right; /* توجيه النص إلى اليمين */
+}
+
+.sidebar ul li a:hover {
+  background-color: var(--bgSection); /* لون الخلفية عند التمرير */
+  color: var(--mainColor); /* لون النص عند التمرير */
+}
+
+.landing {
+  margin-top: 60px; /* المسافة من الأعلى تحت الهيدر */
+  height: 100vh; /* ملء الشاشة */
+  background-color: #000; /* لون خلفية الصفحة الرئيسية */
+  color: #fff; /* لون النص */
+  display: flex;
+  align-items: center; /* توسيط العناصر عموديًا */
+  justify-content: center; /* توسيط العناصر أفقيًا */
+  text-align: center; /* توجيه النص إلى الوسط */
+  flex-direction: column; /* توسيط العناصر عموديًا */
+}
+
+.landing .container .content h2 {
+  font-size: 30px; /* حجم خط العنوان */
+  color: var(--mainColor); /* لون العنوان */
+  margin-bottom: 20px; /* المسافة السفلية */
+}
+
+.landing .container .content p {
+  color: var(--textColor); /* لون النص */
+  font-size: 18px; /* حجم الخط */
+  max-width: 600px; /* عرض النص */
+  margin: 0 auto; /* توسيط النص */
+}
+
+.subjects-section {
+  background-color: var(--bgSection); /* لون خلفية قسم المواد */
+  padding: 40px 0; /* حشوة من الأعلى والأسفل */
+  text-align: center; /* توجيه النص إلى الوسط */
+}
+
+.subjects-section h3 {
+  font-size: 28px; /* حجم خط العنوان */
+  color: var(--mainColor); /* لون العنوان */
+  margin-bottom: 20px; /* المسافة السفلية */
+}
+
+.subjects-cards {
+  display: flex; /* عرض مرن */
+  gap: 20px; /* المسافة بين العناصر */
+  justify-content: center; /* توسيط العناصر أفقيًا */
+  flex-wrap: wrap; /* لف العناصر */
+}
+
+.subject-card {
+  background-color: #fff; /* لون خلفية البطاقة */
+  border: 1px solid #ddd; /* حدود البطاقة */
+  border-radius: 12px; /* زوايا مدورة */
+  padding: 20px; /* حشوة داخل البطاقة */
+  width: 250px; /* عرض البطاقة */
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); /* ظل البطاقة */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير الانتقال */
+  position: relative; /* لجعل الظل يظهر بشكل أفضل */
+}
+
+.subject-card:hover {
+  transform: translateY(-5px); /* تحريك البطاقة لأعلى عند التمرير */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* ظل أقوى عند التمرير */
+  background-color: #f9f9f9; /* تغيير الخلفية عند التمرير */
+}
+
+.subject-card h4 {
+  font-size: 24px; /* حجم خط عنوان البطاقة */
+  color: var(--mainColor); /* لون العنوان */
+  margin-bottom: 10px; /* المسافة السفلية */
+}
+
+.subject-card ul li {
+  margin: 12px 0; /* زيادة المسافة بين العناصر */
+}
+
+.subject-card ul li a {
+  color: #555; /* لون النص */
+  font-weight: bold; /* جعل النص عريض */
+  text-decoration: none; /* إزالة التسطير */
+  transition: color 0.3s ease; /* تأثير الانتقال على اللون */
+}
+
+.subject-card ul li a:hover {
+  color: var(--mainColor); /* تغيير اللون عند التمرير */
+}
+
+.header {
+  text-align: right; /* توجيه النص إلى اليمين */
+}
+
+.icon {
+  left: initial; /* إعادة تعيين الموقع */
+  right: 15px; /* المحافظة على المسافة */
+}
+
+.sidebar ul li {
+  text-align: right; /* توجيه النص إلى اليمين */
+}
+
+.subject-card ul li {
+  text-align: right; /* توجيه النص إلى اليمين */
+}
+
+/* تنسيق العناوين في الأقسام */
+section h2 {
+  text-align: center; /* توسيط العنوان */
+  font-size: 1.8em; /* حجم خط أكبر */
+  color: var(--textColor); /* لون النص */
+  background-color: var(--mainColor); /* لون خلفية مميز */
+  padding: 10px; /* إضافة هوامش داخلية */
+  border-radius: 5px; /* زوايا مدورة */
+  margin: 20px 0; /* إضافة هوامش خارجية */
+}
+
+/* تنسيق النصوص داخل الأقسام */
+section p {
+  text-align: center; /* توسيط النص */
+  font-size: 1.2em; /* حجم خط أكبر */
+  color: #333; /* لون النص */
+  margin-bottom: 10px; /* إضافة هوامش سفلية */
+}
+
+/* تنسيق القائمة في الأقسام */
+section ul {
+  list-style-type: none; /* إزالة النقاط */
+  padding: 0; /* إزالة الحشوات */
+  margin: 0; /* إزالة الهوامش */
+  text-align: center; /* توجيه النص إلى الوسط */
+}
+
+section ul li {
+  margin: 5px 0; /* إضافة هوامش */
+}
+
+section ul li a {
+  color: var(--mainColor); /* لون الروابط */
+  text-decoration: underline; /* إضافة التسطير */
+  transition: color 0.3s; /* تأثير الانتقال */
+}
+
+section ul li a:hover {
+  color: var(--textColor); /* تغيير اللون عند التمرير */
+}
+.section-cards {
+  display: flex; /* استخدام العرض المرن */
+  gap: 40px; /* المسافة بين العناصر */
+  justify-content: center; /* توسيط العناصر أفقيًا */
+  flex-wrap: wrap; /* لف العناصر */
+  margin-top: 20px; /* مسافة من الأعلى */
+  margin-bottom: 10px; /* مسافة من الأعلى */
+}
+
+.section-card {
+  background-color: #fff; /* لون خلفية البطاقة */
+  border: 1px solid #ddd; /* حدود البطاقة */
+  border-radius: 12px; /* زوايا مدورة */
+  padding: 20px; /* حشوة داخل البطاقة */
+  width: 250px; /* عرض البطاقة */
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); /* ظل البطاقة */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير الانتقال */
+  position: relative; /* لجعل الظل يظهر بشكل أفضل */
+  text-align: center; /* توجيه النص إلى الوسط */
+
+}
+
+.section-card h3 {
+  font-size: 24px; /* حجم خط عنوان البطاقة */
+  color: var(--mainColor); /* لون العنوان */
+  margin-bottom: 10px; /* المسافة السفلية */
+}
+
+.section-card p {
+  color: #555; /* لون النص */
+  font-size: 16px; /* حجم النص */
+  margin-bottom: 15px; /* إضافة مسافة سفلية */
+}
+
+/* زر التحميل */
+.download-btn {
+  display: inline-block; /* عرض ككتلة */
+  background-color: var(--mainColor); /* لون الزر */
+  color: #fff; /* لون النص داخل الزر */
+  padding: 10px 15px; /* حشوة داخل الزر */
+  border-radius: 5px; /* زوايا مدورة */
+  text-decoration: none; /* إزالة التسطير */
+  transition: background-color 0.3s ease; /* تأثير الانتقال */
+}
+
+.download-btn:hover {
+  background-color: #155ab5; /* لون الزر عند التمرير */
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.logo-center {
+  display: flex;
+  align-items: center;
+}
+
+.college-logo {
+  width: 150px; /* حدد الحجم المناسب للشعار */
+  height: auto;
+  margin-top: 11px; /* يمكنك زيادة أو تقليل القيمة حسب المسافة المطلوبة */
+}
+.footer {
+  background-color: #000000; /* لون خلفية أخضر */
+  color: white; /* لون النص أبيض */
+  text-align: center; /* محاذاة النص إلى المنتصف */
+  padding: 15px 0; /* حشوة للتذييل */
+  position: relative; /* موضع نسبي للتذييل */
+  bottom: 0; /* ربط التذييل بأسفل الصفحة */
+  width: 100%; /* عرض 100% */
+  font-family: 'Arial', sans-serif; /* نوع الخط */
+  font-size: 16px; /* حجم الخط */
+}
