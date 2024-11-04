@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
-    <script src="./fingerprint-check.js"></script>
 </head>
 <style>
   /* إضافة الخلفية */
@@ -166,35 +165,79 @@
             <!-- أضف المزيد من السكاشن حسب الحاجة -->
         </div>
     </section>
-
-    <script>
-        // تفعيل القائمة الجانبية
-        document.getElementById("toggle").addEventListener("click", function() {
-            document.getElementById("sidebar").classList.toggle("show");
-        });
-
-        // تفعيل القائمة المنسدلة لكل مادة مع حركة السهم
-        document.querySelectorAll(".subject > span").forEach(item => {
-            item.addEventListener("click", function() {
-                const subMenu = this.nextElementSibling;
-                const arrow = this.querySelector(".arrow");
-                subMenu.classList.toggle("show");
-                arrow.classList.toggle("rotate");
-
-                // إغلاق القوائم الفرعية الأخرى
-                document.querySelectorAll(".sub-menu").forEach(menu => {
-                    if (menu !== subMenu) {
-                        menu.classList.remove("show");
-                        menu.previousElementSibling.querySelector(".arrow").classList.remove("rotate");
-                    }
-                });
-            });
-        });
-    </script> 
     <footer class="footer">
       <div class="container">
           <p>All Rights Reserved © 2024  | <a href="https://wa.me/+201154180620" style="color: rgb(0, 132, 255); text-decoration: none;">Marawan</a></p>
       </div>
     </footer>
+    <script>
+      
+      // تفعيل القائمة الجانبية
+      document.getElementById("toggle").addEventListener("click", function() {
+        document.getElementById("sidebar").classList.toggle("show");
+      });
+    
+      // تفعيل القائمة المنسدلة لكل مادة مع حركة السهم
+      document.querySelectorAll(".subject > span").forEach(item => {
+        item.addEventListener("click", function() {
+          const subMenu = this.nextElementSibling;
+          const arrow = this.querySelector(".arrow");
+          subMenu.classList.toggle("show");
+          arrow.classList.toggle("rotate");
+    
+          // إغلاق القوائم الفرعية الأخرى
+          document.querySelectorAll(".sub-menu").forEach(menu => {
+            if (menu !== subMenu) {
+              menu.classList.remove("show");
+              menu.previousElementSibling.querySelector(".arrow").classList.remove("rotate");
+            }
+          });
+        });
+      });
+      (async () => {
+    // تحميل FingerprintJS
+    const fp = await FingerprintJS.load();
+    const result = await fp.get();
+    
+    // جلب بصمة الجهاز الحالية
+    const currentFingerprint = result.visitorId;
+    console.log('Current Fingerprint:', currentFingerprint);
+    
+    // قائمة البصمات المسموح بها
+    const allowedFingerprints = [
+        '',
+        '',
+        // أضف المزيد من البصمات المسموح بها هنا
+    ];
+    
+    // التحقق من إذا كانت البصمة الحالية مسموح بها
+    if (!allowedFingerprints.includes(currentFingerprint)) {
+        document.body.innerHTML = `
+            <div class="container" style="text-align: center; margin-top: 100px;">
+                <h2>Request Permission</h2>
+                <a href="https://wa.me/+201154180620" class="request-button" style="
+                    display: inline-block;
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 15px 30px;
+                    font-size: 18px;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    transition: background-color 0.3s;
+                ">Request Permission</a>
+                <p style="font-size: 20px; margin-top: 20px; color: #333;">
+                  يرجى النقر على الزر بالأعلى لطلب الإذن.
+                </p>
+                <p style="font-size: 18px; margin-top: 10px; color: #555;">
+                  معرف جهازك الحالي: ${currentFingerprint}
+                </p>
+            </div>
+        `;
+        alert(`جهازك ليس لديه إذن وصول.`);
+    } else {
+        console.log('Access granted');
+    }
+    })();
+    </script>
 </body>
 </html>
