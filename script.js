@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    // تفعيل القائمة الجانبية
+  // تفعيل القائمة الجانبية
     document.getElementById("toggle").addEventListener("click", function() {
         document.getElementById("sidebar").classList.toggle("show");
     });
@@ -69,6 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const allowedFingerprints = [
         '',
         '',
+        // أضف المزيد من البصمات المسموح بها هنا
     ];
 
     // التحقق من إذا كانت البصمة الحالية مسموح بها
@@ -98,4 +98,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         console.log('Access granted');
     }
-});
