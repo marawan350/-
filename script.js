@@ -1,4 +1,5 @@
-  // تفعيل القائمة الجانبية
+document.addEventListener('DOMContentLoaded', async () => {
+    // تفعيل القائمة الجانبية
     document.getElementById("toggle").addEventListener("click", function() {
         document.getElementById("sidebar").classList.toggle("show");
     });
@@ -66,7 +67,7 @@
 
     // قائمة البصمات المسموح بها
     const allowedFingerprints = [
-        'dd740041a38520f1892433695e84845c',
+        '',
         '',
         // أضف المزيد من البصمات المسموح بها هنا
     ];
@@ -98,3 +99,4 @@
     } else {
         console.log('Access granted');
     }
+});
