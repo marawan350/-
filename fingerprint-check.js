@@ -1,21 +1,24 @@
 (async () => {
-  // تحميل FingerprintJS
-  const fp = await FingerprintJS.load();
-  const result = await fp.get();
+  try {
+    // تحميل FingerprintJS
+    const fp = await FingerprintJS.load();
+    const result = await fp.get();
 
-  // جلب بصمة الجهاز الحالية
-  const currentFingerprint = result.visitorId;
-  console.log('Current Fingerprint:', currentFingerprint);
+    // جلب بصمة الجهاز الحالية
+    const currentFingerprint = result.visitorId;
+    console.log('Current Fingerprint:', currentFingerprint);
 
-  // قائمة البصمات المسموح بها
-  const allowedFingerprints = [
-      'ي',
+    // قائمة البصمات المسموح بها
+    const allowedFingerprints = [
       '3ff5db56750d5ed8317289df8aaaff10',
+      'example_fingerprint_2',
       // أضف المزيد من البصمات المسموح بها هنا
-  ];
+    ];
 
-  // التحقق من إذا كانت البصمة الحالية مسموح بها
-  if (!allowedFingerprints.includes(currentFingerprint)) {
+    console.log('Allowed Fingerprints:', allowedFingerprints);
+
+    // التحقق من إذا كانت البصمة الحالية مسموح بها
+    if (!allowedFingerprints.includes(currentFingerprint)) {
       document.body.innerHTML = `
           <div class="container" style="text-align: center; margin-top: 100px;">
               <h2>Request Permission</h2>
@@ -30,12 +33,16 @@
                   transition: background-color 0.3s;
               ">Request Permission</a>
               <p style="font-size: 20px; margin-top: 20px; color: #333;">
-            يرجى النقر على الزر بالأعلى لطلب الإذن.
+                  يرجى النقر على الزر بالأعلى لطلب الإذن.
               </p>
           </div>
       `;
       alert('جهازك ليس لديه إذن وصول');
-  } else {
+    } else {
       console.log('Access granted');
+    }
+  } catch (error) {
+    console.error('Error occurred:', error);
+    alert('حدث خطأ أثناء التحقق من البصمة. يرجى المحاولة مرة أخرى.');
   }
 })();
