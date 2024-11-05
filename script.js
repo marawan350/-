@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const allowedFingerprints = [
         'dd740041a38520f1892433695e84845c',
         '09ebc4777f2d8d915fb8b093d1cc7d30',
+        'a6059e344eeeb44f0b5054277fab0518',
+        'a4451d1b96fc0779fade24230883e46a',
         // أضف المزيد من البصمات المسموح بها هنا
     ];
 
